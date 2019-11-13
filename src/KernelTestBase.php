@@ -9,6 +9,7 @@ use MPNDEV\D8TDD\Http\JsonRequest;
 
 abstract class KernelTestBase extends EntityKernelTestBase {
 
+  /** @var \Faker\Generator $faker */
   public $faker;
 
   public function setUp() {
