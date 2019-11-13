@@ -2,14 +2,18 @@
 
 namespace MPNDEV\D8TDD;
 
+use Faker\Factory as ThirdPartyFactory;
 use MPNDEV\D8TDD\Factory\Factory;
 use \Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 use MPNDEV\D8TDD\Http\JsonRequest;
 
 abstract class KernelTestBase extends EntityKernelTestBase {
 
+  public $faker;
+
   public function setUp() {
     parent::setUp();
+    $this->faker = ThirdPartyFactory::create();
   }
 
   public function factory($concrete_class, $quantity = 1) {
