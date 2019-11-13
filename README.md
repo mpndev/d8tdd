@@ -47,7 +47,6 @@ $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $this->factory(Node::class)->define('project', [
   'type' => 'project',
@@ -63,7 +62,6 @@ $this->factory(Node::class)->define('project', [
 <br>
 
 ```php
-<?php
 
 $project = $this->factory(Node::class)->make('project');
 
@@ -82,7 +80,6 @@ $project->get('title')->getString();  // will return 'Some Project Title'
 <br>
 
 ```php
-<?php
 
 $project = $this->factory(Node::class)->make('project', [
   'title' => 'Some Another Title'
@@ -106,7 +103,6 @@ $project->get('field_something')->getString();  // will return 'Something'
 <br>
 
 ```php
-<?php
 
 $projects = $this->factory(Node::class, 15)->make('project');
 
@@ -121,7 +117,6 @@ $projects = $this->factory(Node::class, 15)->make('project');
 <br>
 
 ```php
-<?php
 
 $this->factory(Node::class)->create('project');
 
@@ -134,7 +129,6 @@ $this->factory(Node::class)->create('project');
 <br>
 
 ```php
-<?php
 
 $project = $this->factory(Node::class)->make('project');
 
@@ -151,7 +145,6 @@ $project->save()
 <br>
 
 ```php
-<?php
 
 /**
  * make
@@ -186,7 +179,6 @@ $project = $this->factory(Node::class)->create('project', [], function($project_
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('GET')
@@ -197,7 +189,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('POST')
@@ -208,7 +199,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('PUT')
@@ -219,7 +209,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('PATCH')
@@ -230,7 +219,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('DELETE')
@@ -245,7 +233,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('POST')
@@ -261,7 +248,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <br>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('POST')
@@ -276,7 +262,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <p>Attach server:</p>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('POST')
@@ -291,7 +276,6 @@ $response = $this->jsonRequest('http://localhost/some/endpoint')
 <p>Attach files:</p>
 
 ```php
-<?php
 
 $response = $this->jsonRequest('http://localhost/some/endpoint')
   ->using('POST')
