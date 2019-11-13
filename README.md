@@ -54,6 +54,8 @@ $this->factory(Node::class)->define('project', [
 ```
 
 <br>
+<p>Here you have access to the "Faker" library. [Click here](https://github.com/fzaninotto/Faker) to see available methods.</p>
+<br>
 <hr>
 <br>
 <p>If you need to make an instance of a "project" in your tests you can do so by using:</p>
