@@ -24,7 +24,6 @@ php ./vendor/mpndev/d8tdd/src/generate.php make:kerneltest MyModule
         <br>
 
 ```php
-
 $this->factory(Node::class)->make();
 
 $this->jsonRequest('http://localhost/some/endpoint')
