@@ -54,7 +54,7 @@ $this->factory(Node::class)->define('project', [
 ```
 
 <br>
-<p>Here you have access to the "Faker" library. [Click here](https://github.com/fzaninotto/Faker) to see available methods.</p>
+<p>Here you have access to the "Faker" library. <a href="https://github.com/fzaninotto/Faker">Click here</a> to see available methods.</p>
 <br>
 <hr>
 <br>
