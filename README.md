@@ -2,6 +2,13 @@
 <p>Now that's a very challenging task! For every test you need to write tons and tons of preparation code.</p>
 <br/>
 <h2>Here are some helpful tools!</h2>
+<p>Install via composer:</p>
+
+```
+composer require mpndev/t8tdd
+```
+
+<hr>
 <p>Lets start with the Kernel tests for your module.</p>
 <p>First you need to create an abstract class that extends KernelTestBase class. KernelTestBase lives in this library.</p>
 <ul>
