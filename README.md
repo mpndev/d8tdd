@@ -9,14 +9,22 @@
     <li>Let's say you have module "my_module". Execute the following command:
 <br>
 <br>
+<small>use the name of your module in "snake_case":</small>
+<br>
+<br>
+    
+```
+php ./vendor/mpndev/d8tdd/src/generate.php make:kerneltest my_module
+```
+
+<small>or the name of your module in "PascalCase":</small>
+<br>
     
 ```
 php ./vendor/mpndev/d8tdd/src/generate.php make:kerneltest MyModule
 ```
 
-<br>
-        <small>(use the name of your module in PascalCase!)</small>
-        <p>This will scaffold the abstract class for you.</p>
+<p>This will scaffold the abstract class for you.</p>
     </li>
     <li>Every test class, that will make kernel-tests, must extends "MyModuleKernelTestBase";</li>
     <li>This will give you the powers of "factory" and "jsonRequest" functionalities:

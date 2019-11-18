@@ -22,26 +22,14 @@ class GenerateKernelTestCommand extends Command {
 
   protected function configure()
   {
-    $this->addArgument('name', InputArgument::REQUIRED, 'The name of the folder of the module in PascalCase.')
+    $this->addArgument('name', InputArgument::REQUIRED, 'The name of the folder of the module.')
       ->setDescription('Create [your module name]KernelTestBase that need to be extended by your kernel tests in drupal 8.')
       ->setHelp('This command allows you to create [your module name]KernelBaseTest...');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    $this->input = $input;
-    $this->output = $output;
-    $this->PascalName = $this->input->getArgument('name');
-    $this->snake_name  = strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $this->PascalName));
-
-    $this->template_file = realpath(dirname(__DIR__).'/Commands/kernel_template.php');
-    $this->module_dir = dirname(__DIR__, 5) . '/web/modules/custom/' . $this->snake_name;
-    $this->module_tests_kernel_dir = $this->module_dir . '/tests/src/Kernel/';
-    $this->new_file = $this->module_tests_kernel_dir . $this->PascalName . 'KernelTestBase.php';
-
-    $this->file_content = file_get_contents($this->template_file);
-    $this->file_content = str_replace('PascalName', $this->PascalName, $this->file_content);
-    $this->file_content = str_replace('snake_name', $this->snake_name, $this->file_content);
+    $this->buildCommandData($input, $output);
 
     $this->startPreparingMessage();
     if (is_dir($this->module_dir)) {
@@ -94,7 +82,7 @@ class GenerateKernelTestCommand extends Command {
 
   private function createdMessage() {
     $this->output->writeln([
-      'Created: <info>' . $this->PascalName . 'KernelTestBase class</info>',
+      'Created: <info>' . $this->PascalName . 'KernelTestBase abstract class</info>',
       '',
       'Now you can extend <info>' . $this->PascalName . 'KernelTestBase</info> and use the power of',
       '<info>$this->factory(...)</info> and <info>$this->jsonRequest(...)</info> methods<info>.</info>',
@@ -108,6 +96,30 @@ class GenerateKernelTestCommand extends Command {
       '<error>There is no module directory: ' . $this->module_dir . '</error>',
       '',
     ]);
+  }
+
+  private function buildCommandData($input, $output) {
+
+    $this->input = $input;
+    $this->output = $output;
+
+    if (preg_match('~^\p{Lu}~u', $this->input->getArgument('name'))) {
+      $this->PascalName = $this->input->getArgument('name');
+      $this->snake_name = strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $this->PascalName));
+    } else {
+      $this->snake_name = $this->input->getArgument('name');
+      $this->PascalName = str_replace('_', '', ucwords($this->snake_name, '_'));
+    }
+
+
+    $this->template_file = realpath(dirname(__DIR__).'/Commands/kernel_template.php');
+    $this->module_dir = dirname(__DIR__, 5) . '/web/modules/custom/' . $this->snake_name;
+    $this->module_tests_kernel_dir = $this->module_dir . '/tests/src/Kernel/';
+    $this->new_file = $this->module_tests_kernel_dir . $this->PascalName . 'KernelTestBase.php';
+
+    $this->file_content = file_get_contents($this->template_file);
+    $this->file_content = str_replace('PascalName', $this->PascalName, $this->file_content);
+    $this->file_content = str_replace('snake_name', $this->snake_name, $this->file_content);
   }
 
 }
