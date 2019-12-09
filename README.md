@@ -190,10 +190,118 @@ $project = $this->factory(Node::class)->create('project', [], function($project_
 <hr>
 <br>
 <br>
+
+<h2>HttpRequest:</h2>
+<br>
+<p>Helper, that makes available requests for testing endpoints.</p>
+<p>The request will not go outside. Instead, it will be handled from the Drupal kernel, and the response can be inspected. Nice isn't it?</p>
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('GET')
+  ->send();
+
+```
+
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('POST')
+  ->send();
+
+```
+
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('PUT')
+  ->send();
+
+```
+
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('PATCH')
+  ->send();
+
+```
+
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('DELETE')
+  ->send();
+
+```
+
+<br>
+<hr>
+<br>
+<p>Attach cookie:</p>
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('POST')
+  ->withCookie($some_cookie)
+  ->send();
+
+```
+
+<br>
+<hr>
+<br>
+<p>Attach content:</p>
+<br>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('POST')
+  ->withContent($some_content)
+  ->send();
+
+```
+
+<br>
+<hr>
+<br>
+<p>Attach server:</p>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('POST')
+  ->withServer($some_server)
+  ->send();
+
+```
+
+<br>
+<hr>
+<br>
+<p>Attach files:</p>
+
+```php
+$response = $this->httpRequest('http://localhost/some/endpoint')
+  ->using('POST')
+  ->withFiles($some_files)
+  ->send();
+
+```
+
+<br>
+<hr>
+<br>
+
 <h2>JsonRequest:</h2>
 <br>
 <p>Helper, that makes available json requests (with application/json header) for testing endpoints.</p>
-<p>The request will not go outside. Instead, it will be handled from the Drupal kernel, and the response can be inspected. Nice isn't it?</p>
+<p>The request will not go outside. Instead, it will be handled from the Drupal kernel, and the response can be inspected. The same like HttpRequest Helper.</p>
 <br>
 
 ```php

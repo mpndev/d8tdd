@@ -21,6 +21,10 @@ abstract class KernelTestBase extends EntityKernelTestBase {
     return Factory::for($concrete_class, $quantity);
   }
 
+  public function httpRequest($url) {
+    return HttpRequest::to($url);
+  }
+
   public function jsonRequest($url) {
     return JsonRequest::to($url);
   }
